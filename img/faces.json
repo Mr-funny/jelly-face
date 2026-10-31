@@ -1,0 +1,15 @@
+{
+  "base": "base.webp",
+  "pain": [
+    "crosseyed.webp",
+    "surprised.webp",
+    "squint.webp",
+    "puff.webp"
+  ],
+  "fun": [
+    "grin.webp",
+    "wink_tongue.webp",
+    "laugh.webp",
+    "smirk.webp"
+  ]
+}

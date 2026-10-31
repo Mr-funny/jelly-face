@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- EDIT: page title -->
+<title>Hola, I'm Leo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;900&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  /* EDIT: colors */
+  :root {
+    --bg: #efede8;
+    --ink: #111;
+    --muted: #4a4a4a;
+    --orange: #f2470f;
+    --line: #d9d6cf;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Inter Tight", "Noto Sans SC", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  nav {
+    max-width: 1120px; margin: 0 auto; padding: 18px 24px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .handle { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; }
+  .handle i { width: 26px; height: 26px; border-radius: 50%; background: var(--orange) url(img/base.webp) center 18% / 150% no-repeat; }
+  .pill { font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px; background: var(--ink); color: #fff; text-decoration: none; }
+  .pill.hot { background: var(--orange); }
+  nav .spacer { flex: 1; }
+
+  main {
+    max-width: 1120px; margin: 0 auto; padding: 40px 24px 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
+  }
+  h1 {
+    font-weight: 900; font-size: clamp(44px, 6.4vw, 84px);
+    line-height: .95; letter-spacing: -0.045em; margin: 0 0 28px;
+  }
+  h1 mark {
+    background: linear-gradient(transparent 58%, var(--orange) 58%, var(--orange) 92%, transparent 92%);
+    color: var(--ink); padding: 0 .04em;
+  }
+  .copy p { font-size: 16px; line-height: 1.6; color: var(--muted); margin: 0 0 14px; max-width: 30em; }
+  .copy p.lead { color: var(--ink); font-weight: 700; }
+  form { display: flex; gap: 8px; margin-top: 26px; max-width: 420px; }
+  form input {
+    flex: 1; min-width: 0; font: inherit; font-size: 14px; padding: 12px 14px;
+    border: 1.5px solid var(--ink); border-radius: 6px; background: #fff;
+  }
+  form button {
+    font: inherit; font-weight: 700; font-size: 14px; padding: 12px 18px; border: 0; border-radius: 6px;
+    background: var(--orange); color: #fff; cursor: pointer;
+  }
+  .note { font-size: 13px; color: var(--muted); margin-top: 10px; min-height: 1.2em; }
+
+  .stage { position: relative; display: grid; place-items: center; padding-top: 12%; }
+  #disc {
+    width: min(460px, 100%); aspect-ratio: 1; border-radius: 50%; background: var(--orange);
+  }
+  .hint {
+    position: absolute; left: 50%; bottom: -46px; transform: translateX(-50%);
+    font-size: 13px; font-weight: 700; color: var(--muted); white-space: nowrap;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .hint b { color: var(--orange); font-variant-numeric: tabular-nums; }
+
+  footer {
+    max-width: 1120px; margin: 0 auto; padding: 22px 24px 40px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 10px 28px; font-size: 13px; color: var(--muted);
+  }
+  footer span:first-child { font-weight: 700; color: var(--ink); }
+
+  #gl { position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 10; }
+
+  @media (max-width: 760px) {
+    main { grid-template-columns: 1fr; padding-top: 16px; gap: 60px; }
+    .stage { order: -1; padding-top: 18%; }
+    #disc { width: min(340px, 82vw); }
+  }
+</style>
+</head>
+<body>
+<!-- EDIT: handle + nav links -->
+<nav>
+  <div class="handle"><i></i>@leo.makes</div>
+  <a class="pill hot" href="#">关于我</a>
+  <a class="pill" href="#">作品</a>
+  <span class="spacer"></span>
+  <a class="pill hot" href="#sub">订阅</a>
+</nav>
+
+<main>
+  <!-- EDIT: headline, name and bio -->
+  <section class="copy">
+    <h1>Hola！<br>我是 <mark>Leo</mark></h1>
+    <p class="lead">我喜欢做一些酷东西。</p>
+    <p>我的超能力是把注意力像激光一样聚焦在一件事上，然后对它反复打磨，直到它变得很棒。</p>
+    <p>过去十年我一直在做独立产品：从零做起、慢慢长大、再卖掉。也写了一些开源工具，有几万人在用。</p>
+    <p>现在我在一边做小生意，一边看 AI 怎么抢我的饭碗。订阅一下，看看结局如何。</p>
+    <form id="sub">
+      <input type="email" placeholder="you@email.com" aria-label="邮箱">
+      <button type="submit">订阅 →</button>
+    </form>
+    <div class="note" id="note"></div>
+  </section>
+
+  <section class="stage">
+    <div id="disc" aria-label="头像，可以拖拽"></div>
+    <div class="hint">↖ 抓住脸往外拽 · 已被蹂躏 <b id="count">0</b> 次</div>
+  </section>
+</main>
+
+<!-- EDIT: footer -->
+<footer>
+  <span>Leo · 虚构人物演示</span>
+  <span>头像由 AI 生成</span>
+  <span>果冻形变：three.js + 弹簧网格</span>
+</footer>
+
+<canvas id="gl"></canvas>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+
+// ---------- tuning (see references/tuning.md) ----------
+const SCALE = 1.18;   // image width relative to disc diameter
+const COLS = 60;      // mesh resolution
+const K_REST = 220, COUPLE = 700, K_DRAG = 1400, SIGMA = 0.065;
+const REVERT_MS = 3200;
+
+// img/faces.json: { "base": "base.webp", "pain": [...], "fun": [...] } — written by scripts/prepare_faces.py
+const FACES = await fetch('img/faces.json').then((r) => r.json()).catch(() => ({ base: 'base.webp', pain: [], fun: [] }));
+const PAIN = FACES.pain?.length ? FACES.pain : (FACES.fun || []);   // shown while being pulled
+const FUN  = FACES.fun?.length ? FACES.fun : PAIN;                 // shown after letting go
+const ALL = [...new Set([FACES.base, ...PAIN, ...FUN])];
+
+const disc = document.getElementById('disc');
+const canvas = document.getElementById('gl');
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true, premultipliedAlpha: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+const scene = new THREE.Scene();
+const camera = new THREE.OrthographicCamera(0, 1, 0, 1, -10, 10); // y-down pixel space
+
+function resize() {
+  renderer.setSize(innerWidth, innerHeight, false);
+  camera.right = innerWidth; camera.bottom = innerHeight;
+  camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize); resize();
+
+// ---------- textures ----------
+const loader = new THREE.TextureLoader();
+const tex = {};
+await Promise.all(ALL.map((file) => new Promise((res) => {
+  loader.load(`img/${file}`, (t) => {
+    t.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    tex[file] = t; res();
+  }, undefined, res);
+})));
+const pick = (list) => {
+  const options = list.filter((e) => e !== current && tex[e]);
+  return options.length ? options[(Math.random() * options.length) | 0] : current;
+};
+const baseImg = tex[FACES.base].image;
+const IMG_AR = baseImg.height / baseImg.width;
+const ROWS = Math.round(COLS * IMG_AR);
+const N = COLS * ROWS;
+
+// ---------- grid mesh ----------
+const pos = new Float32Array(N * 3);
+const uv = new Float32Array(N * 2);
+const idx = [];
+for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+  const n = j * COLS + i;
+  uv[n * 2] = i / (COLS - 1);
+  uv[n * 2 + 1] = 1 - j / (ROWS - 1);
+  if (i < COLS - 1 && j < ROWS - 1) {
+    const a = n, b = n + 1, c = n + COLS, d = n + COLS + 1;
+    idx.push(a, c, b, b, c, d);
+  }
+}
+const geo = new THREE.BufferGeometry();
+geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+geo.setAttribute('uv', new THREE.BufferAttribute(uv, 2));
+geo.setIndex(idx);
+
+const uniforms = {
+  mapA: { value: tex[FACES.base] }, mapB: { value: tex[FACES.base] }, mixT: { value: 1 },
+  uOrigin: { value: new THREE.Vector2() }, uSize: { value: new THREE.Vector2() },
+  uCircle: { value: new THREE.Vector3() },
+};
+const mat = new THREE.ShaderMaterial({
+  uniforms, transparent: true, premultipliedAlpha: true, side: THREE.DoubleSide, depthTest: false,
+  vertexShader: `
+    varying vec2 vUv;
+    void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+  fragmentShader: `
+    uniform sampler2D mapA, mapB; uniform float mixT;
+    uniform vec2 uOrigin, uSize; uniform vec3 uCircle;
+    varying vec2 vUv;
+    void main() {
+      vec4 c = mix(texture2D(mapA, vUv), texture2D(mapB, vUv), mixT);
+      // clip the body by the lower half of the disc, using the *rest* position so the skin keeps its cut while stretched
+      vec2 rest = uOrigin + vec2(vUv.x, 1.0 - vUv.y) * uSize;
+      float d = length(rest - uCircle.xy);
+      float keep = rest.y < uCircle.y ? 1.0 : 1.0 - smoothstep(uCircle.z - 1.0, uCircle.z + 1.0, d);
+      float a = c.a * keep;
+      if (a < 0.003) discard;
+      gl_FragColor = vec4(c.rgb * a, a);
+    }`,
+});
+const mesh = new THREE.Mesh(geo, mat);
+mesh.frustumCulled = false;
+scene.add(mesh);
+
+// ---------- soft body state ----------
+const ox = new Float32Array(N), oy = new Float32Array(N);
+const vx = new Float32Array(N), vy = new Float32Array(N);
+const ax = new Float32Array(N), ay = new Float32Array(N);
+const kRest = new Float32Array(N), w = new Float32Array(N);
+for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+  const t = j / (ROWS - 1);
+  const s = Math.min(1, Math.max(0, (t - 0.72) / 0.28));
+  kRest[j * COLS + i] = K_REST * (1 + 3 * s * s); // shoulders are stiffer than the face
+}
+
+let layout = { left: 0, top: 0, W: 1, H: 1, cx: 0, cy: 0, r: 1 };
+function measure() {
+  const b = disc.getBoundingClientRect();
+  const D = b.width, W = D * SCALE, H = W * IMG_AR;
+  layout = { W, H, left: b.left + D / 2 - W / 2, top: b.bottom - H, cx: b.left + D / 2, cy: b.top + D / 2, r: D / 2 };
+}
+
+let drag = null; // { gx, gy, sx, sy, dx, dy, moved }
+
+function step(dt) {
+  const dragging = !!drag, damp = dragging ? 14 : 5.5;
+  for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+    const n = j * COLS + i;
+    let sx = 0, sy = 0, c = 0;
+    if (i > 0) { sx += ox[n - 1]; sy += oy[n - 1]; c++; }
+    if (i < COLS - 1) { sx += ox[n + 1]; sy += oy[n + 1]; c++; }
+    if (j > 0) { sx += ox[n - COLS]; sy += oy[n - COLS]; c++; }
+    if (j < ROWS - 1) { sx += ox[n + COLS]; sy += oy[n + COLS]; c++; }
+    let fx = -kRest[n] * ox[n] + COUPLE * (sx / c - ox[n]) - damp * vx[n];
+    let fy = -kRest[n] * oy[n] + COUPLE * (sy / c - oy[n]) - damp * vy[n];
+    if (dragging && w[n] > 1e-3) {
+      fx += K_DRAG * w[n] * (drag.dx - ox[n]);
+      fy += K_DRAG * w[n] * (drag.dy - oy[n]);
+    }
+    ax[n] = fx; ay[n] = fy;
+  }
+  for (let n = 0; n < N; n++) {
+    vx[n] += ax[n] * dt; vy[n] += ay[n] * dt;
+    ox[n] += vx[n] * dt; oy[n] += vy[n] * dt;
+  }
+}
+
+function setWeights(gx, gy) {
+  for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+    const dx = i / (COLS - 1) - gx, dy = (j / (ROWS - 1)) * IMG_AR - gy;
+    w[j * COLS + i] = Math.exp(-(dx * dx + dy * dy) / (2 * SIGMA * SIGMA));
+  }
+}
+
+function poke(gx, gy, strength) {
+  for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+    const n = j * COLS + i;
+    const dx = i / (COLS - 1) - gx, dy = (j / (ROWS - 1)) * IMG_AR - gy;
+    const d = Math.hypot(dx, dy) + 1e-4;
+    const k = Math.exp(-(d * d) / (2 * 0.16 * 0.16)) * strength;
+    vx[n] += (dx / d) * k; vy[n] += (dy / d) * k;
+  }
+}
+
+// ---------- expressions ----------
+let current = FACES.base, revertTimer = 0, fadeStart = 0;
+function show(name) {
+  if (name === current || !tex[name]) return;
+  uniforms.mapA.value = tex[current];
+  uniforms.mapB.value = tex[name];
+  uniforms.mixT.value = 0;
+  fadeStart = performance.now();
+  current = name;
+}
+
+// ---------- hit testing (alpha mask of the neutral face) ----------
+const MW = 200, MH = Math.max(1, Math.round(200 * IMG_AR));
+const mask = (() => {
+  const c = document.createElement('canvas'); c.width = MW; c.height = MH;
+  const g = c.getContext('2d'); g.drawImage(baseImg, 0, 0, MW, MH);
+  return g.getImageData(0, 0, MW, MH).data;
+})();
+function hit(px, py) {
+  const { left, top, W, H, cx, cy, r } = layout;
+  const u = (px - left) / W, v = (py - top) / H;
+  if (u < 0 || u > 1 || v < 0 || v > 1) return false;
+  if (py > cy && Math.hypot(px - cx, py - cy) > r) return false;
+  return mask[(((v * (MH - 1)) | 0) * MW + ((u * (MW - 1)) | 0)) * 4 + 3] > 60;
+}
+
+// ---------- input ----------
+const countEl = document.getElementById('count');
+let count = 0;
+
+function down(e) {
+  measure();
+  if (!hit(e.clientX, e.clientY)) return false;
+  const gx = (e.clientX - layout.left) / layout.W, gy = (e.clientY - layout.top) / layout.W;
+  drag = { gx, gy, sx: e.clientX, sy: e.clientY, dx: 0, dy: 0, moved: 0 };
+  setWeights(gx, gy);
+  clearTimeout(revertTimer);
+  show(pick(PAIN));
+  document.body.style.cursor = 'grabbing';
+  return true;
+}
+function move(e) {
+  if (!drag) {
+    if (e.pointerType === 'mouse') { measure(); document.body.style.cursor = hit(e.clientX, e.clientY) ? 'grab' : ''; }
+    return;
+  }
+  let dx = (e.clientX - drag.sx) / layout.W, dy = (e.clientY - drag.sy) / layout.W;
+  const len = Math.hypot(dx, dy), max = 1.6;
+  if (len > max) { dx *= max / len; dy *= max / len; }
+  drag.dx = dx; drag.dy = dy;
+  drag.moved = Math.max(drag.moved, Math.hypot(e.clientX - drag.sx, e.clientY - drag.sy));
+}
+function up() {
+  if (!drag) return;
+  if (drag.moved < 6) poke(drag.gx, drag.gy, 2.2);
+  drag = null;
+  countEl.textContent = ++count;
+  show(pick(FUN));
+  revertTimer = setTimeout(() => show(FACES.base), REVERT_MS);
+  document.body.style.cursor = '';
+}
+addEventListener('pointerdown', (e) => { if (down(e)) e.preventDefault(); });
+addEventListener('pointermove', move);
+addEventListener('pointerup', up);
+addEventListener('pointercancel', up);
+// stop the page from scrolling while a finger is pulling the face
+addEventListener('touchstart', (e) => { measure(); const t = e.touches[0]; if (t && hit(t.clientX, t.clientY)) e.preventDefault(); }, { passive: false });
+addEventListener('touchmove', (e) => { if (drag) e.preventDefault(); }, { passive: false });
+
+document.getElementById('sub').addEventListener('submit', (e) => {
+  e.preventDefault();
+  document.getElementById('note').textContent = '谢谢！（这只是个演示，不会真的发邮件）';
+});
+
+// ---------- run ----------
+poke(0.5, 0.35, 1.4); // a little wobble hello
+
+let last = performance.now(), acc = 0;
+const DT = 1 / 240;
+function frame(now) {
+  acc += Math.min(0.05, (now - last) / 1000); last = now;
+  while (acc >= DT) { step(DT); acc -= DT; }
+  uniforms.mixT.value = Math.min(1, (now - fadeStart) / 90);
+
+  measure();
+  const { left, top, W, H, cx, cy, r } = layout;
+  uniforms.uOrigin.value.set(left, top);
+  uniforms.uSize.value.set(W, H);
+  uniforms.uCircle.value.set(cx, cy, r);
+  for (let j = 0; j < ROWS; j++) for (let i = 0; i < COLS; i++) {
+    const n = j * COLS + i;
+    pos[n * 3] = left + (i / (COLS - 1)) * W + ox[n] * W;
+    pos[n * 3 + 1] = top + (j / (ROWS - 1)) * H + oy[n] * W;
+  }
+  geo.attributes.position.needsUpdate = true;
+  renderer.render(scene, camera);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>
