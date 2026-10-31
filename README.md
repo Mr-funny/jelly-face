@@ -5,7 +5,7 @@ A personal landing page whose avatar can be grabbed and stretched like jelly. It
 **Live:** https://mr-funny.github.io/jelly-face/
 
 - Leo is a fictional character; all expressions are AI-generated.
-- Rendering: three.js grid mesh + spring soft-body simulation, pure static files.
+- Two modes: pinch (drag to stretch) and a 30-second boxing challenge with 5 injury stages, combos, crits and K.O.
 - Inspired by the avatar interaction on rameerez.com.
 
 Made with the `hbg-jelly-face-site` skill.
