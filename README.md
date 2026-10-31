@@ -1,11 +1,15 @@
-# Jelly Face
+# 果冻拳王 · Jelly Punch
 
-A personal landing page whose avatar can be grabbed and stretched like jelly. It wobbles back when released and swaps facial expressions on every pull.
+A tiny browser game with a face you can pinch and punch.
 
-**Live:** https://mr-funny.github.io/jelly-face/
+**Play:** https://mr-funny.github.io/jelly-face/
 
-- Leo is a fictional character; all expressions are AI-generated.
-- Two modes: pinch (drag to stretch) and a 30-second boxing challenge with 5 injury stages, combos, crits and K.O.
-- Inspired by the avatar interaction on rameerez.com.
+- 🤏 **Pinch mode**: drag the face to stretch it like jelly. It wobbles back and changes expression.
+- 🥊 **Boxing challenge**: 30 seconds to land as many punches as you can.
+  - Hit zones (left cheek, right cheek, chin, nose) each get a different reaction.
+  - Combos, crits and dizzy stars.
+  - 5 injury stages, ending in a K.O.
+
+The character is fictional and AI-generated. Built with three.js using a spring-mesh soft body.
 
 Made with the `hbg-jelly-face-site` skill.

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- EDIT: page title -->
-<title>Hola, I'm Leo</title>
+<title>果冻拳王 · Jelly Punch</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;900&family=Noto+Sans+SC:wght@400;700;900&display=swap" rel="stylesheet">
@@ -27,40 +27,32 @@
   }
   button { font: inherit; cursor: pointer; }
 
-  nav {
+  header {
     max-width: 1120px; margin: 0 auto; padding: 18px 24px;
-    display: flex; align-items: center; gap: 10px;
+    display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 15px; letter-spacing: -0.01em;
   }
-  .handle { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 14px; }
-  .handle i { width: 26px; height: 26px; border-radius: 50%; background: var(--orange) url(img/base.webp) center 18% / 150% no-repeat; }
-  .pill { font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 6px; background: var(--ink); color: #fff; text-decoration: none; }
-  .pill.hot { background: var(--orange); }
-  nav .spacer { flex: 1; }
+  header small { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .12em; }
 
   main {
-    max-width: 1120px; margin: 0 auto; padding: 40px 24px 80px;
+    max-width: 1120px; margin: 0 auto; padding: 30px 24px 80px;
     display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center;
   }
   h1 {
-    font-weight: 900; font-size: clamp(44px, 6.4vw, 84px);
-    line-height: .95; letter-spacing: -0.045em; margin: 0 0 28px;
+    font-weight: 900; font-size: clamp(52px, 7.4vw, 96px);
+    line-height: .92; letter-spacing: -0.05em; margin: 0 0 18px;
   }
   h1 mark {
     background: linear-gradient(transparent 58%, var(--orange) 58%, var(--orange) 92%, transparent 92%);
     color: var(--ink); padding: 0 .04em;
   }
-  .copy p { font-size: 16px; line-height: 1.6; color: var(--muted); margin: 0 0 14px; max-width: 30em; }
-  .copy p.lead { color: var(--ink); font-weight: 700; }
-  form { display: flex; gap: 8px; margin-top: 26px; max-width: 420px; }
-  form input {
-    flex: 1; min-width: 0; font: inherit; font-size: 14px; padding: 12px 14px;
-    border: 1.5px solid var(--ink); border-radius: 6px; background: #fff;
-  }
-  form button {
-    font-weight: 700; font-size: 14px; padding: 12px 18px; border: 0; border-radius: 6px;
-    background: var(--orange); color: #fff;
-  }
-  .note { font-size: 13px; color: var(--muted); margin-top: 10px; min-height: 1.2em; }
+  .tagline { font-size: 20px; font-weight: 700; margin: 0 0 26px; }
+  .rules { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; max-width: 30em; }
+  .rules li { display: grid; grid-template-columns: 28px 1fr; gap: 8px; font-size: 15px; line-height: 1.55; color: var(--muted); }
+  .rules li span:first-child { font-size: 18px; line-height: 1.3; }
+  .rules b { color: var(--ink); }
+  .rules.boxing-only, body.boxing .rules.pinch-only { display: none; }
+  body.boxing .rules.boxing-only { display: grid; }
+  .credit { margin-top: 26px; font-size: 12px; color: var(--muted); }
 
   /* ---------- stage ---------- */
   .stage { display: flex; flex-direction: column; align-items: center; gap: 18px; padding-top: 12%; user-select: none; -webkit-user-select: none; }
@@ -169,32 +161,30 @@
 </style>
 </head>
 <body>
-<!-- EDIT: handle + nav links -->
-<nav>
-  <div class="handle"><i></i>@leo.makes</div>
-  <a class="pill hot" href="#">关于我</a>
-  <a class="pill" href="#">作品</a>
-  <span class="spacer"></span>
-  <a class="pill hot" href="#sub">订阅</a>
-</nav>
+<!-- EDIT: game name -->
+<header>🥊 果冻拳王 <small>JELLY PUNCH</small></header>
 
 <main>
-  <!-- EDIT: headline, name and bio -->
-  <section class="copy">
-    <h1>Hola！<br>我是 <mark>Leo</mark></h1>
-    <p class="lead">我喜欢做一些酷东西。</p>
-    <p>我的超能力是把注意力像激光一样聚焦在一件事上，然后对它反复打磨，直到它变得很棒。</p>
-    <p>过去十年我一直在做独立产品：从零做起、慢慢长大、再卖掉。也写了一些开源工具，有几万人在用。</p>
-    <p>现在我在一边做小生意，一边看 AI 怎么抢我的饭碗。订阅一下，看看结局如何。</p>
-    <form id="sub">
-      <input type="email" placeholder="you@email.com" aria-label="邮箱">
-      <button type="submit">订阅 →</button>
-    </form>
-    <div class="note" id="note"></div>
+  <!-- EDIT: title, tagline and rules -->
+  <section class="intro">
+    <h1>果冻<br><mark>拳王</mark></h1>
+    <p class="tagline">捏他、揍他，把他打成猪头。</p>
+    <ul class="rules pinch-only">
+      <li><span>🤏</span><span><b>捏脸模式</b>：抓住脸往任意方向拽，像太妃糖一样拉长。</span></li>
+      <li><span>🫠</span><span>松手会弹回去抖几下，每次都换一个表情。</span></li>
+      <li><span>🥊</span><span>手痒了？切到<b>拳击挑战</b>，30 秒内看你能打多少拳。</span></li>
+    </ul>
+    <ul class="rules boxing-only">
+      <li><span>⏱</span><span>点<b>开始</b>，3-2-1 倒计时后有 <b>30 秒</b>尽情出拳。</span></li>
+      <li><span>🎯</span><span><b>左脸、右脸、下巴、鼻子</b>挨打的反应各不相同。</span></li>
+      <li><span>⚡</span><span>换着部位打伤害 +1，连击越长加成越高，还会随机<b>暴击</b>。</span></li>
+      <li><span>🤕</span><span>伤害累积：毫发无伤 → 轻微挂彩 → 鼻青脸肿 → 惨不忍睹 → <b>面目全非</b>，打满直接 K.O.</span></li>
+    </ul>
+    <p class="credit">角色是 AI 生成的虚构人物，不针对任何真人。</p>
   </section>
 
   <section class="stage">
-    <div id="disc" aria-label="头像，可以拖拽或击打"></div>
+    <div id="disc" aria-label="角色，可以拖拽或击打"></div>
 
     <div class="hud" id="hud">
       <div class="hud-row">
@@ -217,8 +207,8 @@
 
 <!-- EDIT: footer -->
 <footer>
-  <span>Leo · 虚构人物演示</span>
-  <span>头像由 AI 生成</span>
+  <span>果冻拳王 · Jelly Punch</span>
+  <span>角色由 AI 生成</span>
   <span>果冻形变：three.js + 弹簧网格</span>
 </footer>
 
@@ -821,10 +811,6 @@ addEventListener('pointercancel', up);
 addEventListener('touchstart', (e) => { measure(); const t = e.touches[0]; if (t && hit(t.clientX, t.clientY)) e.preventDefault(); }, { passive: false });
 addEventListener('touchmove', (e) => { if (drag) e.preventDefault(); }, { passive: false });
 
-$('sub').addEventListener('submit', (e) => {
-  e.preventDefault();
-  $('note').textContent = '谢谢！（这只是个演示，不会真的发邮件）';
-});
 
 // ---------- run ----------
 renderHud(); renderPanel();
